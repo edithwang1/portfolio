@@ -1126,3 +1126,55 @@ body.dark-mode .venture-status {
 body.dark-mode .status-label {
     color: #d1d5db; /* White-ish label */
 }
+
+/* =========================================
+   DARK MODE FIXES (Hero & Snapshot)
+   Paste this at the VERY BOTTOM of style.css
+   ========================================= */
+
+/* 1. Force ALL Sections to lose their white background in dark mode */
+body.dark-mode section,
+body.dark-mode .hero-section,
+body.dark-mode .executive-snapshot,
+body.dark-mode .main-container {
+    background-color: #111827 !important; /* Dark Background */
+    color: #f3f4f6;
+}
+
+/* 2. Fix the Hero Text */
+body.dark-mode .hero-title, 
+body.dark-mode .hero-subtitle, 
+body.dark-mode .hero-description,
+body.dark-mode h1 {
+    color: #ffffff !important; /* Pure White Title */
+}
+
+/* 3. Fix the "Executive Snapshot" Cards (The Black Out Fix) */
+body.dark-mode .snapshot-card,
+body.dark-mode .card {
+    background-color: #1f2937 !important; /* Dark Grey Card */
+    border: 1px solid #374151;             /* Subtle Border */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Darker Shadow */
+}
+
+/* FORCE text inside cards to be White */
+body.dark-mode .snapshot-card h3,
+body.dark-mode .snapshot-card h4,
+body.dark-mode .snapshot-card p,
+body.dark-mode .snapshot-card li,
+body.dark-mode .card h3,
+body.dark-mode .card p {
+    color: #e5e7eb !important; /* Light Grey Text */
+}
+
+/* 4. Fix Section Titles (like "Executive Snapshot") */
+body.dark-mode .section-title,
+body.dark-mode h2 {
+    color: #f9fafb !important;
+}
+
+/* 5. Fix the "Trusted by..." footer text below the cards */
+body.dark-mode .trust-text,
+body.dark-mode .snapshot-footer {
+    color: #9ca3af !important; /* Muted Grey */
+}
