@@ -415,24 +415,24 @@
     <p>&copy; 2026 Edith Wang, CPA, PMP. | Built for Impact.</p>
 </footer>
 
-<div class="floating-ai" onclick="toggleChat()">
-    <i class="fas fa-robot"></i>
-    <span class="tooltip">Chat with Edith's AI</span>
-</div>
-
-<div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-        <div class="chat-title">
-            <i class="fas fa-robot"></i> Edith's Digital Twin
-        </div>
-        <button class="close-chat" onclick="toggleChat()">&times;</button>
+    <div class="floating-ai" onclick="toggleChat()">
+      <i class="fas fa-robot"></i>
+      <span class="tooltip">Ask Edith</span>
     </div>
     
-    <div class="chat-body" id="chatBody">
-        <div class="message bot-message">
-            Hey my friend! Welcome to my space. So nice to meet you here! 👋 <br><br>
-            Do you have any questions, or shall we just chat?
-        </div>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-title"><i class="fas fa-robot"></i> Edith AI Concierge</div>
+        <button class="close-chat" onclick="toggleChat()">&times;</button>
+      </div>
+
+    <div class="quick-replies" id="quickReplies">
+      <button data-topic="experience">💼 Experience</button>
+      <button data-topic="projects">📌 Projects</button>
+      <button data-topic="skills">💻 Skills</button>
+      <button data-topic="venture">🚀 Venture</button>
+      <button data-topic="joke">😄 Joke</button>
+      <button data-topic="contact">✉️ Contact</button>
     </div>
 
     <div class="chat-input-area">
