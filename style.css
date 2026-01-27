@@ -1000,3 +1000,104 @@ body.dark-mode #userInput { background: #2d2d2d; color: white; border-color: #44
         text-align: center;
     }
 }
+
+/* =========================================
+   DARK MODE OVERRIDES
+   Paste this at the very bottom of style.css
+   ========================================= */
+
+body.dark-mode {
+    background-color: #111827; /* Dark Gray bg for the main page */
+    color: #f3f4f6;
+}
+
+/* --- HERO SECTION DARK MODE --- */
+body.dark-mode .hero-title,
+body.dark-mode .hero-subtitle, 
+body.dark-mode .section-title,
+body.dark-mode .snapshot-title {
+    color: #f9fafb; /* Bright white text */
+}
+
+body.dark-mode .lead-text {
+    color: #e5e7eb !important;
+}
+
+/* --- VENTURE SECTION DARK MODE --- */
+body.dark-mode .venture-summary {
+    background-color: #0b0f19; /* Almost black for section bg */
+    border-top: 1px solid #1f2937;
+}
+
+body.dark-mode .venture-card {
+    background-color: #1f2937; /* Dark Gray card */
+    border-color: #374151;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6); /* Darker shadow */
+}
+
+/* Venture List Items */
+body.dark-mode .feature-item {
+    background-color: #111827; /* Darker than card */
+    border-color: #374151;
+}
+
+body.dark-mode .feature-item:hover {
+    background-color: #374151; /* Lighten on hover */
+    border-color: #6b7280;
+}
+
+body.dark-mode .feature-item span {
+    color: #e5e7eb;
+}
+
+/* Venture Icons & Pills */
+body.dark-mode .check-icon {
+    background-color: #1e3a8a; /* Dark Blue bg */
+    color: #93c5fd;            /* Light Blue check */
+}
+
+body.dark-mode .award-pill {
+    background-color: #1e3a8a;
+    border-color: #1e40af;
+    color: #bfdbfe;
+}
+
+body.dark-mode .award-text {
+    color: #9ca3af;
+}
+
+body.dark-mode .summary-body p {
+    color: #d1d5db;
+}
+
+/* Buttons in Dark Mode */
+body.dark-mode .btn-strategy {
+    background-color: #f3f4f6; /* White button */
+    color: #111827;            /* Black text */
+}
+
+body.dark-mode .btn-strategy:hover {
+    background-color: #d1d5db;
+}
+
+body.dark-mode .link-brand {
+    color: #60a5fa; /* Lighter blue link */
+}
+
+/* --- EXECUTIVE SNAPSHOT (If you have cards there) --- */
+/* Assuming you have cards with class .card or similar */
+body.dark-mode .card, 
+body.dark-mode .snapshot-card {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+}
+
+body.dark-mode .card h3,
+body.dark-mode .card-title {
+    color: #fff;
+}
+
+body.dark-mode .card p,
+body.dark-mode .card li {
+    color: #d1d5db;
+}
