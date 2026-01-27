@@ -4,23 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const quickReplies = document.getElementById("quickReplies");
   const inputField = document.getElementById("userInput");
 
+  // Prevent errors if elements are missing
   if (!chatBody) return;
 
-  // 1) Greeting (single source of truth)
-  // DELETE OR COMMENT OUT THIS LINE:
-  // addBot("Hi, I’m Edith’s AI concierge. You can ask about experience, applied projects, or the AI venture.");
-
-  // 2) Toggle (single class name)
+  // 1) Toggle Chat Function
+  // We attach this to 'window' so the onclick in your HTML still works
   window.toggleChat = () => {
+    // NOTE: Ensure your CSS uses '.open' for the visible state. 
+    // If your CSS uses '.active', change "open" to "active" below.
     chatWindow?.classList.toggle("open");
-    
-    // NEW: Check if chat is empty. If so, say hello!
+
+    // Greeting Logic: If chat is empty when opened, say Hello
     if (chatBody && chatBody.childElementCount === 0) {
-        addBot("Hi, I’m Edith’s AI concierge. You can ask about experience, applied projects, or the AI venture.");
+      addBot("Hi, I’m Edith’s AI concierge. You can ask about experience, applied projects, or the AI venture.");
     }
   };
 
-  // 3) Quick replies
+  // 2) Quick Replies Click Listener
   if (quickReplies) {
     quickReplies.addEventListener("click", (e) => {
       const btn = e.target.closest("button[data-topic]");
@@ -30,19 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4) Enter to send
+  // 3) Handle "Enter" key
   window.checkEnter = (event) => {
     if (event.key === "Enter") sendUserMessage();
   };
 
+  // 4) Send Message Logic
   window.sendUserMessage = () => {
     const text = (inputField?.value || "").trim();
     if (!text) return;
+    
     addUser(text);
     inputField.value = "";
 
     const reply = getResponse(text);
-    setTimeout(() => addBot(reply), 400);
+    setTimeout(() => addBot(reply), 400); // Slight delay for realism
   };
 
   function handleTopic(topic) {
@@ -55,16 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
       contact: "How can I contact her?"
     };
     const userText = topicMap[topic] || "Tell me more.";
+    
     addUser(userText);
     const reply = getResponse(userText);
     setTimeout(() => addBot(reply), 350);
   }
 
-  // Safe renderers
+  // --- Render Functions ---
   function addUser(text) {
     const div = document.createElement("div");
     div.className = "message user-message";
-    div.textContent = text; // XSS-safe
+    div.textContent = text; 
     chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
   }
@@ -72,53 +75,54 @@ document.addEventListener("DOMContentLoaded", () => {
   function addBot(text) {
     const div = document.createElement("div");
     div.className = "message bot-message";
-    div.textContent = text; // keep plain text for safety + professionalism
+    // Using innerHTML allows you to use <b> or links in your responses if you want
+    div.innerHTML = text; 
     chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  // Response logic
+  // --- The Brain (Response Logic) ---
   function getResponse(input) {
     const text = input.toLowerCase();
 
     // Venture
     if (hasAny(text, ["asktaxly", "tax", "venture", "ai platform"])) {
-      return "Edith is building an applied AI platform focused on reducing complexity and error in cross-border tax and financial compliance, with audit-friendly workflows and professional oversight. You can view the platform at asktaxly.com.";
+      return "Edith is building an applied AI platform focused on reducing complexity in cross-border tax compliance. You can view it at <a href='https://asktaxly.com' target='_blank'>asktaxly.com</a>.";
     }
 
-    // Projects (careful: no overclaims)
+    // Projects
     if (hasAny(text, ["project", "projects", "mayo", "ecolab", "mss", "work"])) {
-      return "Edith works on applied initiatives across healthcare operations, risk governance, and commercial finance transformation. If you want, ask about Mayo Clinic, Ecolab, or risk governance work.";
+      return "Edith works on applied initiatives across healthcare operations and finance transformation. You can ask specifically about <b>Mayo Clinic</b>, <b>Ecolab</b>, or <b>Risk Governance</b>.";
     }
 
-    // Mayo (in progress wording)
+    // Mayo
     if (hasAny(text, ["mayo", "hospital", "tote", "logistics"])) {
-      return "At Mayo Clinic, Edith is working on a root cause analysis of inventory logistics and tote utilization across distribution workflows, focusing on drivers of underutilization and process improvement opportunities.";
+      return "At <b>Mayo Clinic</b>, Edith is working on a root cause analysis of inventory logistics to fix tote underutilization and improve distribution workflows.";
     }
 
-    // Ecolab (completed, quantified ok)
+    // Ecolab
     if (hasAny(text, ["ecolab", "flat fee", "margin", "pricing"])) {
-      return "At Ecolab, Edith evaluated flat-fee billing arrangements and built models to improve margin visibility and decision-making, identifying approximately $18M in potential margin improvement.";
+      return "At <b>Ecolab</b>, Edith built models to improve margin visibility, identifying approximately $18M in potential margin improvement.";
     }
 
-    // Risk governance (avoid 'intern' label)
+    // Risk
     if (hasAny(text, ["risk", "security", "vulnerability", "controls", "governance"])) {
-      return "Edith designed a standardized risk assessment framework covering security, vulnerability, and operational risk domains to support consistent risk identification and governance oversight.";
+      return "Edith designed a standardized risk assessment framework covering security and operational risk to support governance oversight.";
     }
 
     // Experience
     if (hasAny(text, ["experience", "background", "citi", "portfolio"])) {
-      return "Edith has 10+ years in finance transformation and enterprise delivery. Most recently, she managed portfolio governance at Citi, including a $65M+ technology portfolio, with a focus on controls, execution, and measurable outcomes.";
+      return "Edith has 10+ years in finance transformation. Most recently, she managed portfolio governance at <b>Citi</b>, overseeing a $65M+ technology portfolio.";
     }
 
-    // Skills (avoid listing systems you cannot defend)
+    // Skills
     if (hasAny(text, ["skills", "tech", "python", "sql", "power bi", "azure"])) {
-      return "She bridges finance and technology. Core tools include Python, SQL, Power BI, and automation workflows, with enterprise governance and delivery in regulated environments. Credentials include CPA and PMP.";
+      return "She bridges finance and tech using Python, SQL, Power BI, and Azure. Her credentials include CPA and PMP.";
     }
 
     // Contact
     if (hasAny(text, ["contact", "email", "linkedin", "calendly"])) {
-      return "You can connect with Edith on LinkedIn or use the Calendly link on this site to schedule time.";
+      return "You can connect with Edith on LinkedIn or use the Calendly link on this site.";
     }
 
     // Joke
