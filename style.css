@@ -529,11 +529,11 @@ body.dark-mode .insight-card p {
     text-align: center;
 }
 
-/* --- Refined Credentials Footer (Glass Style) --- */
+/* --- Refined Credentials Footer (Platinum/Silver Style) --- */
 .credentials-footer {
     margin-top: 60px;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly brighter divider */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -542,10 +542,10 @@ body.dark-mode .insight-card p {
 }
 
 .cred-label {
-    font-size: 0.8rem;             /* Slightly larger for readability */
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #94a3b8;                /* Light Slate Grey */
+    color: #64748b;                /* Muted Slate Grey */
     font-weight: 700;
     margin-bottom: 5px;
 }
@@ -558,30 +558,35 @@ body.dark-mode .insight-card p {
 }
 
 .cred-pill {
-    font-size: 0.9rem;             /* Clear, readable text size */
-    color: #ffffff;                /* Bright White Text */
-    background: rgba(255, 255, 255, 0.08); /* "Glass" Background - Visible but subtle */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border for definition */
-    padding: 8px 18px;             /* Comfortable padding */
+    font-size: 0.9rem;
+    color: #f1f5f9;                /* Off-White Text */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle glass fill */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin Silver Border */
+    padding: 8px 18px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     gap: 8px;
     font-weight: 500;
-    backdrop-filter: blur(5px);    /* Modern blur effect */
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
 }
 
-/* Icon Styling */
+/* Icon Styling - NOW SILVER (No Blue) */
 .cred-pill i {
-    color: #bfdbfe;                /* Soft Blue Tint for icons (Elegant) */
+    color: #cbd5e1;                /* Light Silver Icon */
     font-size: 0.95rem;
 }
 
-/* Hover Effect */
+/* Hover Effect - Brighten to White */
 .cred-pill:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     border-color: #ffffff;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cred-pill:hover i {
+    color: #ffffff; /* Icon turns white on hover */
 }
