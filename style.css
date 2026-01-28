@@ -529,11 +529,11 @@ body.dark-mode .insight-card p {
     text-align: center;
 }
 
-/* --- Refined Credentials Footer --- */
+/* --- Refined Credentials Footer (Glass Style) --- */
 .credentials-footer {
-    margin-top: 60px;              /* Pushes it to the very bottom */
+    margin-top: 60px;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Very subtle divider line */
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly brighter divider */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -542,42 +542,46 @@ body.dark-mode .insight-card p {
 }
 
 .cred-label {
-    font-size: 0.75rem;            /* Small, uppercase label */
+    font-size: 0.8rem;             /* Slightly larger for readability */
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #64748b;                /* Muted Slate Grey - very subtle */
-    font-weight: 600;
+    color: #94a3b8;                /* Light Slate Grey */
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .cred-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;                     /* Space between badges */
+    gap: 12px;
 }
 
 .cred-pill {
-    font-size: 0.85rem;            /* Elegant, readable size */
-    color: #cbd5e1;                /* Soft White text */
-    border: 1px solid #475569;     /* Thin, dark grey border */
-    background: transparent;       /* No background color (Ghost style) */
-    padding: 6px 16px;
-    border-radius: 50px;           /* Pill shape */
-    transition: all 0.3s ease;
+    font-size: 0.9rem;             /* Clear, readable text size */
+    color: #ffffff;                /* Bright White Text */
+    background: rgba(255, 255, 255, 0.08); /* "Glass" Background - Visible but subtle */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border for definition */
+    padding: 8px 18px;             /* Comfortable padding */
+    border-radius: 50px;
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);    /* Modern blur effect */
+    transition: all 0.3s ease;
 }
 
-/* Icon color inside the pill */
+/* Icon Styling */
 .cred-pill i {
-    color: #94a3b8;                /* Muted blue-grey icon */
-    font-size: 0.9rem;
+    color: #bfdbfe;                /* Soft Blue Tint for icons (Elegant) */
+    font-size: 0.95rem;
 }
 
-/* Hover Effect: Subtle Glow */
+/* Hover Effect */
 .cred-pill:hover {
-    border-color: #e2e8f0;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
