@@ -619,3 +619,25 @@ body.dark-mode .insight-card p {
     box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
     color: #ffffff;
 }
+
+/* Import Google Font: Playfair Display (The "Editorial" Look) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
+
+/* Apply it to Headings */
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif; /* The "Kate" Vibe */
+    letter-spacing: -0.5px; /* Tighter for a modern look */
+}
+
+/* Keep body text clean and readable */
+body, p, a, li {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Make your Main Title (H1) Huge & Centered like hers */
+.hero-section h1 {
+    font-size: 3.5rem; /* Bigger impact */
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0f172a; /* deeply dark slate */
+}
